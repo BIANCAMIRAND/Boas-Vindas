@@ -14,7 +14,7 @@ O sensor de nível de água é um equipamento com diversos modelos, todos com su
 
 O funcionamento deste equipamento é extremamente simples uma vez que conta com apenas dois fios para sua comunicação e acionamento. O sinal para detecção junto ao Arduino é gerado através de um Reed Switch e um imã, um instalado na base e outro na boia.
 
- Produtos Utilizados no Projeto
+ Produtos Utilizados no Projeto:
  
 – 5 Sensores de Nível de Água com Boia Horizontal;
 
@@ -35,3 +35,75 @@ O esquema de ligação deste projeto é tão simples quanto o funcionamento do S
 
 ![image](https://user-images.githubusercontent.com/127752577/224997326-826c2da8-fd96-4efd-bf95-c34e14967ba7.png)
 
+Código de Funcionamento do Sensor de Nível de Água:
+
+
+// Código de Verificação para Nível de Água
+// Arduino IDE Versão 1.8.13
+// Exemplo de visualização no Monitor Serial
+ 
+#define Sensor1 7
+#define Sensor2 8
+#define Sensor3 9
+#define Sensor4 10
+#define Sensor5 11
+#define rele    13
+ 
+int sensor1 = 1, sensor2 = 1, sensor3 = 1, sensor4 = 1, sensor5 = 1;
+ 
+int nivelinicial = 0;
+ 
+void setup() {
+ 
+  Serial.begin(9600);
+ 
+  pinMode(Sensor1, INPUT);
+  pinMode(Sensor2, INPUT);
+  pinMode(Sensor3, INPUT);
+  pinMode(Sensor4, INPUT);
+  pinMode(Sensor5, INPUT);
+  pinMode(rele,    OUTPUT);
+ 
+  Serial.println("Nivel do Reservatorio");
+  Serial.println();
+}
+ 
+void loop() {
+  int sensor1 = digitalRead(Sensor1);
+  int sensor2 = digitalRead(Sensor2);
+  int sensor3 = digitalRead(Sensor3);
+  int sensor4 = digitalRead(Sensor4);
+  int sensor5 = digitalRead(Sensor5);
+ 
+  if ((sensor1 == 1) && (sensor2 == 1) && (sensor3 == 1) && (sensor4 == 1) && (sensor5 == 1)) {
+    Serial.println("Reservatorio Cheio");
+    digitalWrite(rele, LOW);
+  }
+ 
+  else if ((sensor1 == 1) && (sensor2 == 1) && (sensor3 == 1) && (sensor4 == 1) && (sensor5 == 0)) {
+    Serial.println("Nivel de 100 a 75%");
+  }
+ 
+  else if ((sensor1 == 1) && (sensor2 == 1) && (sensor3 == 1) && (sensor4 == 0) && (sensor5 == 0)) {
+    Serial.println("Nivel de 75 a 50%");
+  }
+ 
+  else if ((sensor1 == 1) && (sensor2 == 1) && (sensor3 == 0) && (sensor4 == 0) && (sensor5 == 0)) {
+    Serial.println("Nivel de 50 a 25%");
+  }
+ 
+  else if ((sensor1 == 1) && (sensor2 == 0) && (sensor3 == 0) && (sensor4 == 0) && (sensor5 == 0)) {
+    Serial.println("Nivel Critico");
+      digitalWrite(rele, HIGH);
+  }
+ 
+  else if ((sensor1 == 0) && (sensor2 == 0) && (sensor3 == 0) && (sensor4 == 0) && (sensor5 == 0)) {
+    Serial.println("Reservatorio Vazio");
+  }
+ 
+  else {
+    Serial.println("ALERTA - ERRO");
+  }
+ 
+  delay(1000);
+}
