@@ -13,3 +13,17 @@ O sensor de nível de água é um equipamento com diversos modelos, todos com su
 ![image](https://user-images.githubusercontent.com/127752577/224996691-bd9dc9c3-4d27-416b-8c55-f43942c14422.png)
 
 O funcionamento deste equipamento é extremamente simples uma vez que conta com apenas dois fios para sua comunicação e acionamento. O sinal para detecção junto ao Arduino é gerado através de um Reed Switch e um imã, um instalado na base e outro na boia.
+
+ Produtos Utilizados no Projeto
+ 
+– 5 Sensores de Nível de Água com Boia Horizontal;
+
+– 1 Arduino UNO + Cabo USB;
+
+– 5 Resistores 10K ¼W;
+
+– Protoboard e Jumpers;
+
+– Display LCD 16×2 com fundo azul;
+
+– Módulo Adaptador I2C (IIC).
