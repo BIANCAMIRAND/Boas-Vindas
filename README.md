@@ -27,3 +27,11 @@ O funcionamento deste equipamento é extremamente simples uma vez que conta com 
 – Display LCD 16×2 com fundo azul;
 
 – Módulo Adaptador I2C (IIC).
+
+ Esquema de Ligação do Sensor de Nível de Água sem Display
+O esquema de ligação deste projeto é tão simples quanto o funcionamento do Sensor de Nível de Água. O que dificulta a ligação é a utilização de cinco sensores de nível e a necessidade de resistores Pull Down. Os resistores são responsáveis por evitar a oscilação do sinal de nível lógico estabelecendo um nível LOW como padrão.
+
+![image](https://user-images.githubusercontent.com/127752577/224997234-9dd0a89f-f230-43d4-9190-43b84e8cc044.png)
+
+![image](https://user-images.githubusercontent.com/127752577/224997326-826c2da8-fd96-4efd-bf95-c34e14967ba7.png)
+
